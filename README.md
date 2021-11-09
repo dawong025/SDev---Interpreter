@@ -1,5 +1,5 @@
 # CSC 413 Assignment 3 README
 
-Name:
+Name: Darren Wong
 
-Email:
+Email: dwong19@mail.sfsu.edu
