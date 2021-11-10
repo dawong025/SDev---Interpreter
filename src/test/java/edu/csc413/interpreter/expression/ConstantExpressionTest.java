@@ -10,17 +10,17 @@ import org.junit.jupiter.api.Test;
 public class ConstantExpressionTest {
     @Test
     public void evaluate_positiveValue() {
-        //ConstantExpression expression = new ConstantExpression(5);
-        //ProgramState programState = new ProgramState();
+        ConstantExpression expression = new ConstantExpression(5);
+        ProgramState programState = new ProgramState();
 
-        //assertThat(expression.evaluate(programState), equalTo(5));
+        assertThat(expression.evaluate(programState), equalTo(5));
     }
 
     @Test
     public void evaluate_negativeValue() {
-        //ConstantExpression expression = new ConstantExpression(-3);
-        //ProgramState programState = new ProgramState();
+        ConstantExpression expression = new ConstantExpression(-3);
+        ProgramState programState = new ProgramState();
 
-        //assertThat(expression.evaluate(programState), equalTo(-3));
+        assertThat(expression.evaluate(programState), equalTo(-3));
     }
 }

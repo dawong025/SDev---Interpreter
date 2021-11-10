@@ -19,12 +19,12 @@ import java.util.stream.Collectors;
 public class Parser {
     public Expression createConstantExpression(int value) {
         // TODO: Implement.
-        return null;
+        return new ConstantExpression(value);
     }
 
     public Expression createVariableExpression(String variableName) {
         // TODO: Implement.
-        return null;
+        return new VariableExpression(variableName);
     }
 
     public Expression createArithmeticExpression(String operator, String lhsAsString, String rhsAsString) {
@@ -43,7 +43,16 @@ public class Parser {
     }
 
     public Statement createPrintStatement(String expressionAsString) {
+        /*
+            expressionAsString
+            "5"
+            "x"
+            "x+1"
+
+            call parseExpression from down below
+         */
         // TODO: Implement.
+        //parseExpression(expressionAsString);
         return null;
     }
 

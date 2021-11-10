@@ -1,0 +1,17 @@
+package edu.csc413.interpreter.expression;
+
+import edu.csc413.interpreter.ProgramState;
+
+public class VariableExpression implements Expression{
+    private String name;
+
+    public VariableExpression(String name){
+        this.name = name;
+    }
+
+    @Override
+    //TODO
+    public int evaluate(ProgramState programState){ //program state is not needed in this case
+        return 1;
+    }
+}
