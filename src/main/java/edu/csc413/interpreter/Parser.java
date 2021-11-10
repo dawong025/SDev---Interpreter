@@ -24,7 +24,8 @@ public class Parser {
 
     public Expression createVariableExpression(String variableName) {
         // TODO: Implement.
-        return new VariableExpression(variableName);
+        //eturn new VariableExpression(variableName);
+        return null;
     }
 
     public Expression createArithmeticExpression(String operator, String lhsAsString, String rhsAsString) {
@@ -51,9 +52,8 @@ public class Parser {
 
             call parseExpression from down below
          */
-        // TODO: Implement.
-        //parseExpression(expressionAsString);
-        return null;
+        // TODO: Implement;
+        return new PrintStatement(parseExpression(expressionAsString));
     }
 
     public Statement createAssignStatement(String variableName, String expressionAsString) {

@@ -4,9 +4,11 @@ import edu.csc413.interpreter.ProgramState;
 
 public class VariableExpression implements Expression{
     private String name;
+    private int value;
 
-    public VariableExpression(String name){
+    public VariableExpression(String name, int value){
         this.name = name;
+        this.value = value;
     }
 
     @Override
