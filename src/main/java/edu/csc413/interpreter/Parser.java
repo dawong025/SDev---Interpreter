@@ -24,13 +24,21 @@ public class Parser {
 
     public Expression createVariableExpression(String variableName) {
         // TODO: Implement.
-        //eturn new VariableExpression(variableName);
-        return null;
+        return new VariableExpression(variableName);
     }
 
     public Expression createArithmeticExpression(String operator, String lhsAsString, String rhsAsString) {
         // TODO: Implement.
-        return null;
+        Expression arithmeticExp =
+            switch(operator){
+                case "+" -> new AddExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
+                case "-" -> new SubtractExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
+                case "*" -> new MultiplyExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
+                case "/" -> new DivideExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
+                default -> throw new RuntimeException("Invalid operator: " + operator);
+        };
+        return arithmeticExp;
+
     }
 
     public Expression createFunctionCallExpression(String functionName, List<String> parameterValuesAsStrings) {
@@ -40,7 +48,14 @@ public class Parser {
 
     public Condition createCondition(String operator, String lhsAsString, String rhsAsString) {
         // TODO: Implement.
-        return null;
+        Condition conditionType =
+            switch(operator){
+                case "==" -> new EqualsCondition(parseExpression(lhsAsString), parseExpression(rhsAsString));
+                case "<" -> new LessThanCondition(parseExpression(lhsAsString), parseExpression(rhsAsString));
+                case ">" -> new GreaterThanCondition(parseExpression(lhsAsString),parseExpression(rhsAsString));
+                default -> throw new RuntimeException("Invalid operator: " + operator);
+            };
+        return conditionType;
     }
 
     public Statement createPrintStatement(String expressionAsString) {
@@ -52,18 +67,19 @@ public class Parser {
 
             call parseExpression from down below
          */
-        // TODO: Implement;
+        // TODO: Implement.
         return new PrintStatement(parseExpression(expressionAsString));
     }
 
     public Statement createAssignStatement(String variableName, String expressionAsString) {
         // TODO: Implement.
-        return null;
+        return new AssignStatement(variableName, parseExpression(expressionAsString));
     }
 
     public Statement createIfStatement(String conditionAsString, List<Statement> bodyStatements) {
         // TODO: Implement.
-        return null;
+        //order is flipped in comparison to the createIfStatement method order
+        return new IfStatement(bodyStatements,parseCondition(conditionAsString));
     }
 
     public Statement createWhileStatement(String conditionAsString, List<Statement> bodyStatements) {

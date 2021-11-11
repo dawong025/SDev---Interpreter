@@ -2,7 +2,7 @@ package edu.csc413.interpreter.expression;
 
 import edu.csc413.interpreter.ProgramState;
 
-/*
+
 public abstract class ArithmeticExpression implements Expression{
     private Expression lhs;
     private Expression rhs;
@@ -12,15 +12,11 @@ public abstract class ArithmeticExpression implements Expression{
         this.rhs = rhs;
     }
 
-    protected int evaluateLhs(){
-        //return lhs.evaluate();
-        return 1;
+    protected int evaluateLhs(ProgramState programState){
+        return lhs.evaluate(programState);
     }
-
-    protected int evaluateRhs(){
-        //return rhs.evaluate();
-        return 1;
+    protected int evaluateRhs(ProgramState programState){
+        return lhs.evaluate(programState);
     }
 }
 
- */

@@ -1,4 +1,3 @@
-/*
 package edu.csc413.interpreter.expression;
 
 import edu.csc413.interpreter.ProgramState;
@@ -9,7 +8,6 @@ public class SubtractExpression extends ArithmeticExpression{
     }
     @Override
     public int evaluate(ProgramState programState){
-        return evaluateLhs() - evaluateLhs();
+        return evaluateLhs(programState) - evaluateLhs(programState);
     }
 }
- */

@@ -1,4 +1,4 @@
-/*
+
 package edu.csc413.interpreter.expression;
 
 import edu.csc413.interpreter.ProgramState;
@@ -9,8 +9,7 @@ public class DivideExpression extends ArithmeticExpression{
     }
     @Override
     public int evaluate(ProgramState programState){
-        return evaluateLhs() / evaluateLhs();
+        return (int)evaluateLhs(programState) / evaluateLhs(programState);
     }
 }
 
- */

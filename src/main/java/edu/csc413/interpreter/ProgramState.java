@@ -1,6 +1,8 @@
 package edu.csc413.interpreter;
 
 import edu.csc413.interpreter.statement.Statement;
+
+import javax.swing.plaf.nimbus.State;
 import java.util.*;
 
 /**
@@ -11,19 +13,31 @@ import java.util.*;
 public class ProgramState {
     // TODO: Implement. Add any instance variables you need.
 
+    //Lecture 20 - HashMaps used for storing the function variables as well as the statements
+    private Map<String, List<String>> functionVariables = new HashMap<>();
+    private Map<String, List <Statement>> functionStatements = new HashMap<>();
+
+    //Map used to store map of variable names, define in ProgramState()
+    //String Name = Key, ints = value
+    private Map<String, Integer> variableNames;
+
     public ProgramState() {
         // TODO: Implement. Initialize any instance variables you added.
+        this.variableNames = new HashMap<>();
     }
 
     /** Returns the integer value associated with the specified variable name in the current call frame. */
     public int getVariable(String variable) {
         // TODO: Implement.
-        return 0;
+        //Returns the value of the variable, null if the key is not present in the map
+        return variableNames.get(variable);
     }
 
     /** Sets the value for the specified variable name to the specified value in the current call frame. */
     public void setVariable(String variable, int value) {
         // TODO: Implement.
+        //Replaces the current value in the variable with the new value if the key already exists
+        variableNames.put(variable, value);
     }
 
     /** Adds a new, empty call frame to the top of the call stack, making it the new current call frame. */
