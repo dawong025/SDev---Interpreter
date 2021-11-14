@@ -29,6 +29,7 @@ public class Parser {
 
     public Expression createArithmeticExpression(String operator, String lhsAsString, String rhsAsString) {
         // TODO: Implement.
+
         Expression arithmeticExp =
             switch(operator){
                 case "+" -> new AddExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
@@ -78,13 +79,12 @@ public class Parser {
 
     public Statement createIfStatement(String conditionAsString, List<Statement> bodyStatements) {
         // TODO: Implement.
-        //order is flipped in comparison to the createIfStatement method order
-        return new IfStatement(bodyStatements,parseCondition(conditionAsString));
+        return new IfStatement(parseCondition(conditionAsString), bodyStatements);
     }
 
     public Statement createWhileStatement(String conditionAsString, List<Statement> bodyStatements) {
         // TODO: Implement.
-        return null;
+        return new WhileStatement(parseCondition(conditionAsString), bodyStatements);
     }
 
     public Statement createForStatement(
@@ -93,7 +93,7 @@ public class Parser {
             String rangeEndAsString,
             List<Statement> bodyStatements) {
         // TODO: Implement.
-        return null;
+        return new ForStatement(loopVariableName, parseExpression(rangeStartAsString),parseExpression(rangeEndAsString), bodyStatements);
     }
 
     public Statement createDefineFunctionStatement(

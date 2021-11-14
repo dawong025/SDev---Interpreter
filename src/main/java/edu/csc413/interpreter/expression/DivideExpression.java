@@ -9,7 +9,7 @@ public class DivideExpression extends ArithmeticExpression{
     }
     @Override
     public int evaluate(ProgramState programState){
-        return (int)evaluateLhs(programState) / evaluateLhs(programState);
+        return evaluateLhs(programState) / evaluateRhs(programState);
     }
 }
 

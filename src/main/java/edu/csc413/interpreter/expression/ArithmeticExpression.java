@@ -16,7 +16,7 @@ public abstract class ArithmeticExpression implements Expression{
         return lhs.evaluate(programState);
     }
     protected int evaluateRhs(ProgramState programState){
-        return lhs.evaluate(programState);
+        return rhs.evaluate(programState);
     }
 }
 

@@ -8,7 +8,7 @@ public class MultiplyExpression extends ArithmeticExpression{
     }
     @Override
     public int evaluate(ProgramState programState){
-        return evaluateLhs(programState) * evaluateLhs(programState);
+        return evaluateLhs(programState) * evaluateRhs(programState);
     }
 }
 

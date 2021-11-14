@@ -4,15 +4,18 @@ import edu.csc413.interpreter.ProgramState;
 import edu.csc413.interpreter.expression.Condition;
 import java.util.*;
 
-public class IfStatement extends ConditionBlockStatement{
-    public IfStatement(Condition condition, List<Statement> body){
+
+public class WhileStatement extends ConditionBlockStatement{
+    public WhileStatement(Condition condition, List<Statement> body){
         super(body, condition);
     }
 
+
     @Override
     public void run(ProgramState programState){
-        if(evaluateCondition(programState)){
+        while(evaluateCondition(programState)){
             runBlock(programState);
         }
     }
+
 }
