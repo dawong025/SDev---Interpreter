@@ -2,7 +2,6 @@ package edu.csc413.interpreter;
 
 import edu.csc413.interpreter.statement.Statement;
 
-import javax.swing.plaf.nimbus.State;
 import java.util.*;
 
 /**
@@ -15,6 +14,8 @@ public class ProgramState {
     //Map used to store map of variable names, define in ProgramState()
     //String Name = Key, ints = value
     private Map<String, Integer> variableNames;
+    //private Stack<HashMap<String, Integer>> variableNames;
+
 
     private List <String> functions = new ArrayList<>();
     //Lecture 20 - HashMaps used for storing the function variables as well as the statements
@@ -27,25 +28,38 @@ public class ProgramState {
     public ProgramState() {
         // TODO: Implement. Initialize any instance variables you added. - DONE
         this.variableNames = new HashMap<>();
+        //this.variableNames = new Stack<>();
     }
 
     /** Returns the integer value associated with the specified variable name in the current call frame. */
     public int getVariable(String variable) {
-        // TODO: Implement. - DONE
+        // TODO: Implement.
         //Returns the value of the variable, null if the key is not present in the map
         return variableNames.get(variable);
+        //return variableNames.peek().get(variable);
     }
 
     /** Sets the value for the specified variable name to the specified value in the current call frame. */
     public void setVariable(String variable, int value) {
-        // TODO: Implement. - DONE
-        //Replaces the current value in the variable with the new value if the key already exists
+        // TODO: Implement.
         variableNames.put(variable, value);
+        /* stack implementation
+        if(!variableNames.isEmpty()) {
+            variableNames.peek().put(variable, value);
+        }
+        else{
+            HashMap<String, Integer> newMap = new HashMap<>();
+            newMap.put(variable, value);
+            variableNames.push(newMap);
+        }
+         */
     }
 
     /** Adds a new, empty call frame to the top of the call stack, making it the new current call frame. */
     public void addCallFrame() {
         // TODO: Implement.
+        HashMap<String, Integer> callStack = new HashMap<>();
+        //variableNames.push(callStack);
     }
 
     /**
@@ -53,6 +67,7 @@ public class ProgramState {
      */
     public void removeCallFrame() {
         // TODO: Implement.
+        //variableNames.pop();
     }
 
     /**

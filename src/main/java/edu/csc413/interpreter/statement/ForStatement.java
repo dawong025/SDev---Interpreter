@@ -20,13 +20,13 @@ public class ForStatement extends BlockStatement{
     public void run(ProgramState programState) {
         int rangeS = rangeStart.evaluate(programState);
         int rangeE = rangeEnd.evaluate(programState);
+        programState.setVariable(loopVariable, rangeS);
 
         for(int i = rangeS; i < rangeE; i++){
-            //run body statements
-            //runBlock(programState); //TODO not working
-
-            //increment the value of the loop variable
+            //update the value of the loop variable
             programState.setVariable(loopVariable, i);
+            //run body statements
+            runBlock(programState);
         }
     }
 }

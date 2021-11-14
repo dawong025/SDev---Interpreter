@@ -18,6 +18,7 @@ public class FunctionCallExpression implements Expression{
         List<String> functionParams = programState.getParameterNames(functName);
         List<Statement> functionStatements = programState.getFunctionStatements(functName);
 
+        programState.addCallFrame();
         //match parameters passed in to the parameters stored from the function definition
         for(int i = 0; i < functParams.size(); i++){
             String parameter = functionParams.get(i); //take param name from pre-def function
@@ -30,14 +31,16 @@ public class FunctionCallExpression implements Expression{
             statement.run(programState);
         }
 
+        int returnValue;
         if(programState.hasReturnValue()) {
             //assign a variable w/ the return value, clear it within programState, and return the value
-            int returnValue = programState.getReturnValue();
+            returnValue = programState.getReturnValue();
             programState.clearReturnValue();
-            return returnValue;
         }
         else{
-            return programState.getReturnValue();
+            returnValue = programState.getReturnValue();
         }
+        programState.removeCallFrame();
+        return returnValue;
     }
 }
