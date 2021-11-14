@@ -7,11 +7,10 @@ public class AddExpression extends ArithmeticExpression{
     public AddExpression(Expression lhs, Expression rhs){
         super(lhs, rhs);
     }
+
+    //evaluate lhs and rhs separately, then evaluate based on subclass
     @Override
     public int evaluate(ProgramState programState){
-        //evaluate lhs
-        //evaluate rhs
-        //return those two added together
         return evaluateLhs(programState) + evaluateRhs(programState);
     }
 }

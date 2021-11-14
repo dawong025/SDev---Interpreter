@@ -12,7 +12,8 @@ public class ConstantExpression implements Expression{
     }
 
     @Override
-    public int evaluate(ProgramState programState){ //program state is not needed in this case
+    public int evaluate(ProgramState programState){
+        //programState is not needed in this case
         return value;
     }
 }

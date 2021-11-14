@@ -3,16 +3,16 @@ package edu.csc413.interpreter.statement;
 import edu.csc413.interpreter.ProgramState;
 import edu.csc413.interpreter.expression.Expression;
 
-public class PrintStatement implements Statement{
-
+public class ReturnStatement implements Statement{
     private Expression expression;
 
-    public PrintStatement(Expression expression){
+    public ReturnStatement(Expression expression){
         this.expression = expression;
     }
 
     @Override
     public void run(ProgramState programState){
-        System.out.println(expression.evaluate(programState));
+        //set the return value
+        programState.setReturnValue(expression.evaluate(programState));
     }
 }

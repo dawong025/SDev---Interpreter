@@ -14,6 +14,7 @@ public class AssignStatement implements Statement{
 
     @Override
     public void run(ProgramState programState){
+        //assign the variable with the evaluated value via the programState map
         programState.setVariable(name, expression.evaluate(programState));
     }
 }

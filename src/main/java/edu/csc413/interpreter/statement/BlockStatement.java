@@ -4,9 +4,8 @@ import edu.csc413.interpreter.ProgramState;
 import java.util.*;
 
 public abstract class BlockStatement implements Statement{
-    List<Statement> body;
+    private List<Statement> body;
 
-    //BlockStatement constructor
     public BlockStatement(List <Statement> body){
         this.body = body;
     }

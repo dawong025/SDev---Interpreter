@@ -12,30 +12,33 @@ import java.util.*;
  */
 public class ProgramState {
     // TODO: Implement. Add any instance variables you need.
-
-    //Lecture 20 - HashMaps used for storing the function variables as well as the statements
-    private Map<String, List<String>> functionVariables = new HashMap<>();
-    private Map<String, List <Statement>> functionStatements = new HashMap<>();
-
     //Map used to store map of variable names, define in ProgramState()
     //String Name = Key, ints = value
     private Map<String, Integer> variableNames;
 
+    private List <String> functions = new ArrayList<>();
+    //Lecture 20 - HashMaps used for storing the function variables as well as the statements
+    private Map<String, List<String>> functionParameters = new HashMap<>();
+    private Map<String, List <Statement>> functionStatement = new HashMap<>();
+
+    private boolean returnable = false;
+    private int returnVal = -1;
+
     public ProgramState() {
-        // TODO: Implement. Initialize any instance variables you added.
+        // TODO: Implement. Initialize any instance variables you added. - DONE
         this.variableNames = new HashMap<>();
     }
 
     /** Returns the integer value associated with the specified variable name in the current call frame. */
     public int getVariable(String variable) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         //Returns the value of the variable, null if the key is not present in the map
         return variableNames.get(variable);
     }
 
     /** Sets the value for the specified variable name to the specified value in the current call frame. */
     public void setVariable(String variable, int value) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         //Replaces the current value in the variable with the new value if the key already exists
         variableNames.put(variable, value);
     }
@@ -57,40 +60,52 @@ public class ProgramState {
      * the function name.
      */
     public void registerFunction(String functionName, List<String> parameterNames, List<Statement> functionStatements) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
+        functions.add(functionName);
+        //update the map w/ the function name as the key and the list of parameters as the values
+        functionParameters.put(functionName, parameterNames);
+        //update the map w/ the function name as the key and the list of statements as the values
+        functionStatement.put(functionName, functionStatements);
     }
 
     /** Returns the list of parameter names associated with the specified function name. */
     public List<String> getParameterNames(String functionName) {
-        // TODO: Implement.
-        return null;
+        // TODO: Implement. - DONE
+        return functionParameters.get(functionName);
     }
 
     /** Returns the list of function statements associated with the specified function name. */
     public List<Statement> getFunctionStatements(String functionName) {
-        // TODO: Implement.
-        return null;
+        // TODO: Implement. - DONE
+        return functionStatement.get(functionName);
     }
 
     /** Returns whether or not a return value has been recorded. */
     public boolean hasReturnValue() {
-        // TODO: Implement.
-        return false;
+        // TODO: Implement. - DONE
+        return returnable;
     }
 
     /** Returns the recorded return value, if it exists. */
     public int getReturnValue() {
-        // TODO: Implement.
-        return 0;
+        // TODO: Implement. - DONE
+        return returnVal;
     }
 
     /** Records a return value. hasReturnValue should return true after this method is called. */
     public void setReturnValue(int returnValue) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
+        if(!returnable){
+            //enable returnable and set returnVal to the param
+            returnable = true;
+            returnVal = returnValue;
+        }
     }
 
     /** Clears the recorded return value. hasReturnValue should return false after this method is called. */
     public void clearReturnValue() {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
+            returnable = false;
+            returnVal = -1;
     }
 }

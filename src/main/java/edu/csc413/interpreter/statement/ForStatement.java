@@ -5,9 +5,9 @@ import edu.csc413.interpreter.expression.Expression;
 import java.util.*;
 
 public class ForStatement extends BlockStatement{
-    String loopVariable;
-    Expression rangeStart;
-    Expression rangeEnd;
+    private String loopVariable;
+    private Expression rangeStart;
+    private Expression rangeEnd;
 
     public ForStatement(String loopVariable, Expression rangeStart, Expression rangeEnd, List<Statement> body){
         super(body);

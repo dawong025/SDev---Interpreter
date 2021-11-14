@@ -7,7 +7,6 @@ import java.util.*;
 public abstract class ConditionBlockStatement extends BlockStatement{
     private Condition condition;
 
-    //ConditionBlockStatement constructor
     public ConditionBlockStatement(List<Statement> body, Condition condition){
         super(body);
         this.condition = condition;

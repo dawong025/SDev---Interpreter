@@ -7,6 +7,8 @@ public class LessThanCondition extends Condition{
     public LessThanCondition(Expression lhs, Expression rhs){
         super(lhs,rhs);
     }
+
+    //evaluate lhs and rhs separately, then evaluate based on subclass
     @Override
     public boolean evaluate(ProgramState programState){
         return getLhsValue(programState) < getRhsValue(programState);

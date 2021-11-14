@@ -12,9 +12,12 @@ public abstract class ArithmeticExpression implements Expression{
         this.rhs = rhs;
     }
 
+    //Evaluate the left-hand side
     protected int evaluateLhs(ProgramState programState){
         return lhs.evaluate(programState);
     }
+
+    //Evaluate the right-hand side
     protected int evaluateRhs(ProgramState programState){
         return rhs.evaluate(programState);
     }

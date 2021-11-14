@@ -7,11 +7,9 @@ public class VariableExpression implements Expression{
 
     public VariableExpression(String name){
         this.name = name;
-
     }
 
     @Override
-    //TODO DONE
     public int evaluate(ProgramState programState){
         return programState.getVariable(name);
     }

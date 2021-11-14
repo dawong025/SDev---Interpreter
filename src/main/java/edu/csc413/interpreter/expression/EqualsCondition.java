@@ -6,6 +6,8 @@ public class EqualsCondition extends Condition{
     public EqualsCondition(Expression lhs, Expression rhs){
         super(lhs,rhs);
     }
+
+    //evaluate lhs and rhs separately, then evaluate based on subclass
     @Override
     public boolean evaluate(ProgramState programState){
         return getLhsValue(programState) == getRhsValue(programState);

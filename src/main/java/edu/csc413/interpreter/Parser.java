@@ -18,20 +18,19 @@ import java.util.stream.Collectors;
  */
 public class Parser {
     public Expression createConstantExpression(int value) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new ConstantExpression(value);
     }
 
     public Expression createVariableExpression(String variableName) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new VariableExpression(variableName);
     }
 
     public Expression createArithmeticExpression(String operator, String lhsAsString, String rhsAsString) {
-        // TODO: Implement.
-
+        // TODO: Implement. - DONE
         Expression arithmeticExp =
-            switch(operator){
+            switch(operator){ //switch based on the string operator given
                 case "+" -> new AddExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
                 case "-" -> new SubtractExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
                 case "*" -> new MultiplyExpression(parseExpression(lhsAsString), parseExpression(rhsAsString));
@@ -43,14 +42,19 @@ public class Parser {
     }
 
     public Expression createFunctionCallExpression(String functionName, List<String> parameterValuesAsStrings) {
-        // TODO: Implement.
-        return null;
+        // TODO: Implement. - DONE
+        List<Expression> parameterValues = new ArrayList<>();
+        for(int i = 0; i < parameterValuesAsStrings.size(); i++){
+            Expression newParam = parseExpression(parameterValuesAsStrings.get(i));
+            parameterValues.add(newParam);
+        }
+        return new FunctionCallExpression(functionName, parameterValues);
     }
 
     public Condition createCondition(String operator, String lhsAsString, String rhsAsString) {
-        // TODO: Implement.
+        // TODO: Implement.- DONE
         Condition conditionType =
-            switch(operator){
+            switch(operator){ //switch based on the string operator given
                 case "==" -> new EqualsCondition(parseExpression(lhsAsString), parseExpression(rhsAsString));
                 case "<" -> new LessThanCondition(parseExpression(lhsAsString), parseExpression(rhsAsString));
                 case ">" -> new GreaterThanCondition(parseExpression(lhsAsString),parseExpression(rhsAsString));
@@ -65,25 +69,24 @@ public class Parser {
             "5"
             "x"
             "x+1"
-
             call parseExpression from down below
          */
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new PrintStatement(parseExpression(expressionAsString));
     }
 
     public Statement createAssignStatement(String variableName, String expressionAsString) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new AssignStatement(variableName, parseExpression(expressionAsString));
     }
 
     public Statement createIfStatement(String conditionAsString, List<Statement> bodyStatements) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new IfStatement(parseCondition(conditionAsString), bodyStatements);
     }
 
     public Statement createWhileStatement(String conditionAsString, List<Statement> bodyStatements) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new WhileStatement(parseCondition(conditionAsString), bodyStatements);
     }
 
@@ -92,19 +95,19 @@ public class Parser {
             String rangeStartAsString,
             String rangeEndAsString,
             List<Statement> bodyStatements) {
-        // TODO: Implement.
+        // TODO: Implement. - DONE
         return new ForStatement(loopVariableName, parseExpression(rangeStartAsString),parseExpression(rangeEndAsString), bodyStatements);
     }
 
     public Statement createDefineFunctionStatement(
             String functionName, List<String> parameterNames, List<Statement> functionStatements) {
-        // TODO: Implement.
-        return null;
+        // TODO: Implement. - DONE
+        return new DefineFunctionStatement(functionName, parameterNames, functionStatements);
     }
 
     public Statement createReturnStatement(String expressionAsString) {
         // TODO: Implement.
-        return null;
+        return new ReturnStatement(parseExpression(expressionAsString));
     }
 
     /**

@@ -11,6 +11,7 @@ public class IfStatement extends ConditionBlockStatement{
 
     @Override
     public void run(ProgramState programState){
+        //run once
         if(evaluateCondition(programState)){
             runBlock(programState);
         }
