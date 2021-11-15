@@ -12,13 +12,21 @@ public class FunctionCallExpression implements Expression{
         this.functName = functName;
         this.functParams = functParams;
     }
+
     @Override
     public int evaluate(ProgramState programState){
         //Get the parameters and statements already associated with the pre-defined function
         List<String> functionParams = programState.getParameterNames(functName);
         List<Statement> functionStatements = programState.getFunctionStatements(functName);
+        //get values passed in from function
 
+        /*
+        TODO Stack/CallFrame doesn't work w/ complex-function.txt or fibonacci-recursive.txt
+         only works with scopes.txt when stack related code is not commented out and map related
+         code is commented out
+         */
         programState.addCallFrame();
+
         //match parameters passed in to the parameters stored from the function definition
         for(int i = 0; i < functParams.size(); i++){
             String parameter = functionParams.get(i); //take param name from pre-def function
@@ -38,8 +46,10 @@ public class FunctionCallExpression implements Expression{
             programState.clearReturnValue();
         }
         else{
-            returnValue = programState.getReturnValue();
+            //obligatory return value for this method if the function has no return value
+            returnValue = -1;
         }
+
         programState.removeCallFrame();
         return returnValue;
     }

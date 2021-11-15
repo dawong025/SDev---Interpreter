@@ -11,13 +11,23 @@ import java.util.*;
  */
 public class ProgramState {
     // TODO: Implement. Add any instance variables you need.
+    /*
+        -IMPORTANT: READ ME
+        -Stack implementation was commented out in favor of more functional (test-wise) map
+         implementation
+            - Implementation through Maps pass all tests up to (and including)
+              complex-function.txt
+            - FunctionCallExpression related tests break with stack implementation, and only
+              scopes.txt works
+     */
     //Map used to store map of variable names, define in ProgramState()
     //String Name = Key, ints = value
     private Map<String, Integer> variableNames;
-    //private Stack<HashMap<String, Integer>> variableNames;
 
+    //Stack of maps, each representing its own scope
+    //private Stack<Map<String, Integer>> variableNames;
 
-    private List <String> functions = new ArrayList<>();
+    private List<String> functions = new ArrayList<>();
     //Lecture 20 - HashMaps used for storing the function variables as well as the statements
     private Map<String, List<String>> functionParameters = new HashMap<>();
     private Map<String, List <Statement>> functionStatement = new HashMap<>();
@@ -26,39 +36,47 @@ public class ProgramState {
     private int returnVal = -1;
 
     public ProgramState() {
-        // TODO: Implement. Initialize any instance variables you added. - DONE
+        // TODO: Implement. Initialize any instance variables you added. - [MAP] DONE
         this.variableNames = new HashMap<>();
+        // TODO: Implement. Initialize any instance variables you added. - [STACK] DONE
         //this.variableNames = new Stack<>();
     }
 
     /** Returns the integer value associated with the specified variable name in the current call frame. */
     public int getVariable(String variable) {
-        // TODO: Implement.
+        // TODO: Implement. - [MAP] DONE
         //Returns the value of the variable, null if the key is not present in the map
         return variableNames.get(variable);
+        // TODO: Implement. - [STACK] DONE
         //return variableNames.peek().get(variable);
     }
 
     /** Sets the value for the specified variable name to the specified value in the current call frame. */
     public void setVariable(String variable, int value) {
-        // TODO: Implement.
+        // TODO: Implement. - [MAP] DONE
         variableNames.put(variable, value);
-        /* stack implementation
+        // TODO: Implement. - [STACK] DONE (?)
+        /*
+        //stack implementation
         if(!variableNames.isEmpty()) {
-            variableNames.peek().put(variable, value);
+            HashMap<String, Integer> temp = new HashMap<>();
+            int tempValue = variableNames.peek().get(variable);
+            temp.put(variable, value);
+            variableNames.pop();
+            variableNames.push(temp);
         }
         else{
             HashMap<String, Integer> newMap = new HashMap<>();
             newMap.put(variable, value);
             variableNames.push(newMap);
         }
-         */
+        */
     }
 
     /** Adds a new, empty call frame to the top of the call stack, making it the new current call frame. */
     public void addCallFrame() {
-        // TODO: Implement.
-        HashMap<String, Integer> callStack = new HashMap<>();
+        // TODO: Implement. - [STACK] DONE
+        Map<String, Integer> callStack = new HashMap<>();
         //variableNames.push(callStack);
     }
 
@@ -66,8 +84,12 @@ public class ProgramState {
      * Removes the topmost call frame from the call stack. The current call frame becomes the previous one in the stack.
      */
     public void removeCallFrame() {
-        // TODO: Implement.
-        //variableNames.pop();
+        // TODO: Implement. - [STACK] DONE
+        /*
+        if(!variableNames.isEmpty()) {
+            variableNames.pop();
+        }
+        */
     }
 
     /**
